@@ -1,9 +1,11 @@
 import React from 'react';
 
+
+
 function Profile() {
   return (
     <div>
-      <h1>profile</h1>
+      <h1>Name</h1>
     </div>
   );
 }

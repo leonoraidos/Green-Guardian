@@ -11,6 +11,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'PT Sans Narrow';
 }
 
 main {
@@ -37,7 +38,3 @@ h1 {
   margin-bottom: 0.5rem;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}

@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import ErrorPage from './error-page';
 import Register from './pages/RegisterPage';
+import Profile from './pages/ProfilePage';
 //import reportWebVitals from './reportWebVitals';
 
 const router = createBrowserRouter([
@@ -20,6 +21,12 @@ const router = createBrowserRouter([
     path: "/register",
     element: <Register />,
     errorElement: <ErrorPage />,
+  },
+  {
+    path: "/profile",
+    element: <Profile />,
+    errorElement: <ErrorPage />,
+
   }
 ]);
 
@@ -28,7 +35,6 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
-    {/* <App /> */}
+    <App />
   </React.StrictMode>
 );

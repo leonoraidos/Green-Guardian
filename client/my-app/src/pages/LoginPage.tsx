@@ -37,7 +37,7 @@ function Login() {
       alert(`${res.message}`);
       setState(initialState);
     } else {
-      const {accessToken } = res;
+      const { accessToken } = res;
       localStorage.setItem('accessToken', accessToken);
       // This sets isAuthenticated = true and redirects to profile
       //props.setIsAuthenticated(true);
@@ -49,10 +49,9 @@ function Login() {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-        <section>
-        <h2>Login</h2>
+    <div className="forms">
+      <section>
+        <h2 className="formTitle">Login</h2>
         <form className="form" onSubmit={handleSubmit}>
           <input
             type="text"

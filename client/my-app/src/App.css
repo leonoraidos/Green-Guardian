@@ -1,3 +1,77 @@
+.navbar {
+  background-color: #BA2D0B;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100px;;
+}
 
+.navicons {
+  width: 95px;
+  height: 95px;
+  justify-content: space-between;
+  margin: 4px 20px;
 
+}
+
+.logobar {
+  display: flex;
+  background-color: #003e1fcc;
+  font-family: 'PT Sans Narrow';
+  height: 90px;
+  font-size: 20px;
+  color: #D5F2E3;
+  letter-spacing: 0.1cm;
+  justify-content: center;
+  align-items: center;
+  /* box-shadow: ; */
+}
+
+.forms {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background: #e0e0e0;
+  box-shadow:  20px 20px 60px #bebebe,
+              -20px -20px 60px #ffffff;
+  margin: 100px 20px;
+  height: 500px;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formTitle {
+  font-size: 25px;
+  font-family: 'PT Sans Narrow';
+
+}
+
+input {
+  width: 300px;
+  height: 50px;
+  margin: 20px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid rgb(218, 218, 218);
+}
+
+button {
+  width: 300px;
+  height: 50px;
+  margin-top: 20px;
+  background-color: #fe7b0f69;
+  border: none;
+  color: white;
+  font-size: 20px;
+}
 

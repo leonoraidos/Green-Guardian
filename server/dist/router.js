@@ -35,7 +35,7 @@ router.get('/', (req, res) => {
     res.send('Hello, world!');
 });
 router.post('/register', userController.create);
-router.get('/login', userController.login);
+router.post('/login', userController.login);
 router.get('/me', userController.profile);
 //to save plant to own guarden
 router.post('/save');

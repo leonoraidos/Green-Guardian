@@ -14,6 +14,7 @@ const serverAPI = {
       .then((res) => res.json())
       .catch((err) => console.log(err));
   },
+  
   async login(user: LoginState) {
     return fetch(`${SERVER_URL}/login`, {
       method: 'POST',
@@ -25,6 +26,7 @@ const serverAPI = {
       .then((res) => res.json())
       .catch((err) => console.log(err));
   },
+
   async profile(accessToken: string) {
     return fetch(`${SERVER_URL}/me`, {
       method: 'GET',

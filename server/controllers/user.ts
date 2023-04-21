@@ -34,6 +34,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
   const { email, password } = req.body;
   try {
     const user = await USER.USER.findOne({ email: email });
+    
     if (!user) throw new Error();
     const validatedPass = await bcrypt.compare(password, user.password);
     if (!validatedPass) throw new Error();

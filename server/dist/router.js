@@ -36,13 +36,17 @@ router.get('/', (req, res) => {
 });
 router.post('/register', userController.create);
 router.post('/login', userController.login);
-router.get('/me', userController.profile);
+router.get('/me', authmiddleware_1.default, userController.profile);
 //to save plant to own guarden
 router.post('/save');
 //to get own plants
 //router.get('/myguarden', authMiddleware, userController);
-router.post('/removeplant', authmiddleware_1.default);
+//router.post('/removeplant', authMiddleware, )
 //API REQUESTS
-router.get('/idplant');
+router.post('/idplant', (req, res) => {
+    const base64Img = req.body.image;
+    console.log(base64Img, req);
+    res.status(200);
+});
 router.get('/ownplantdetails');
 module.exports = router;

@@ -7,7 +7,7 @@ import LogoBar from './components/LogoBar'
 import ErrorPage from './error-page';
 import Register from './pages/RegisterPage';
 import Profile from './pages/ProfilePage';
-import Camera from './pages/CameraPage';
+import PlantId from './pages/IdPlantPage';
 import Alerts from './components/AlertList';
 
 import './App.css';
@@ -27,7 +27,7 @@ function App() {
           <Route path='/' element={<Login />} errorElement={<ErrorPage />}/>
           <Route path="/register" element={<Register />} errorElement={<ErrorPage />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
-          <Route path="/camera" element={<Camera />}></Route>
+          <Route path="/camera" element={<PlantId />}></Route>
           <Route path="/alerts" element={<Alerts />}></Route>
           <Route></Route>
         </Routes>

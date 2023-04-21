@@ -8,14 +8,14 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const router = require('./router');
 const cors = require('cors');
 dotenv_1.default.config();
+const port = process.env.PORT || 3001;
 const corsConfig = {
     origin: 'http://localhost:3000',
     credentials: true,
 };
 const app = (0, express_1.default)();
-const port = process.env.PORT || 3001;
-app.use(cors(corsConfig));
 app.use(express_1.default.json());
+app.use(cors(corsConfig));
 app.use(router);
 app.listen(port, () => {
     console.log(` Server is running at http://localhost:${port}`);

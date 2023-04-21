@@ -2,20 +2,22 @@ import { Response } from 'express';
 import { Request } from '../types/user';
 import bcrypt from 'bcrypt';
 import jwt, { Secret } from 'jsonwebtoken';
-const { USER, IUser } =  require('../models/user');
+import USER from '../models/user';
 const SECRET_KEY: string = process.env.SECRET_KEY || 'super secret dont use this what';
 
 export const create = async (req: Request, res: Response): Promise<void> => {
   const { email, password } = req.body;
+  console.log(email);
   try {
-    const user = await USER.findOne({ email: email });
+    // Have to be USER.USER due to the way we export it in models/user.ts
+    const user = await USER.USER.findOne({ email: email });
     if (user) {
       res.status(409).send({ error: '409', message: 'User already exists' });
       return;
     }
     if (password === '') throw new Error();
     const hash = await bcrypt.hash(password, 10);
-    const newUser = new USER({
+    const newUser = new USER.USER ({
       ...req.body,
       password: hash,
     });
@@ -24,14 +26,14 @@ export const create = async (req: Request, res: Response): Promise<void> => {
     res.status(201).send({ accessToken, message: 'User created successfully' });
   } catch (error) {
     res.status(400).send({ error: error, message: 'Could not create user' });
-    console.log(error);
+    console.log({error});
   }
 };
 
 export const login = async (req: Request, res: Response): Promise<void> => {
   const { email, password } = req.body;
   try {
-    const user = await USER.findOne({ email: email });
+    const user = await USER.USER.findOne({ email: email });
     if (!user) throw new Error();
     const validatedPass = await bcrypt.compare(password, user.password);
     if (!validatedPass) throw new Error();
@@ -54,7 +56,3 @@ export const profile = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-export const logout = (req: Request, res: Response): void => {
-  // delete the token client side upon logout.
-  // you would invalidate the token here.
-};

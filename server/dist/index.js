@@ -8,9 +8,13 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const router = require('./router');
 const cors = require('cors');
 dotenv_1.default.config();
+const corsConfig = {
+    origin: 'http://localhost:3000',
+    credentials: true,
+};
 const app = (0, express_1.default)();
 const port = process.env.PORT || 3001;
-app.use(cors());
+app.use(cors(corsConfig));
 app.use(express_1.default.json());
 app.use(router);
 app.listen(port, () => {

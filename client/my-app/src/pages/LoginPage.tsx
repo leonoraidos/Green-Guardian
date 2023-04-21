@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import serverAPI from '../utils/serverAPI';
 import { LoginState } from '../types/user';
@@ -72,7 +73,7 @@ function Login() {
           </button>
         </form>
       </section>
-      <h3>Not Registered? Register here</h3>
+      <h3>Not Registered? <Link to={`register`}>Register here</Link></h3>
     </div>
   );
 }

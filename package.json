@@ -4,6 +4,7 @@
     "nodemon": "^2.0.22"
   },
   "dependencies": {
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "create-react-app": "^5.0.1"
   }
 }

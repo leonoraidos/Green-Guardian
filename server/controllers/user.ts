@@ -21,9 +21,10 @@ export const create = async (req: Request, res: Response): Promise<void> => {
     });
     const { _id } = await newUser.save();
     const accessToken = jwt.sign({ _id }, SECRET_KEY);
-    res.status(201).send({ accessToken });
+    res.status(201).send({ accessToken, message: 'User created successfully' });
   } catch (error) {
-    res.status(400).send({ error, message: 'Could not create user' });
+    res.status(400).send({ error: error, message: 'Could not create user' });
+    console.log(error);
   }
 };
 

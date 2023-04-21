@@ -9,9 +9,9 @@ const router = require('./router');
 const cors = require('cors');
 dotenv_1.default.config();
 const app = (0, express_1.default)();
-const port = process.env.PORT;
-app.use(express_1.default.json());
+const port = process.env.PORT || 3001;
 app.use(cors());
+app.use(express_1.default.json());
 app.use(router);
 app.listen(port, () => {
     console.log(` Server is running at http://localhost:${port}`);

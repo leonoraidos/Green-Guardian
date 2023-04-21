@@ -34,12 +34,13 @@ const router = (0, express_1.Router)();
 router.get('/', (req, res) => {
     res.send('Hello, world!');
 });
-router.get('/login', userController.login);
 router.post('/register', userController.create);
+router.get('/login', userController.login);
+router.get('/me', userController.profile);
 //to save plant to own guarden
 router.post('/save');
 //to get own plants
-router.get('/myguarden', authmiddleware_1.default, userController.profile);
+//router.get('/myguarden', authMiddleware, userController);
 router.post('/removeplant', authmiddleware_1.default);
 //API REQUESTS
 router.get('/idplant');

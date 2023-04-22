@@ -35,13 +35,13 @@ const serverAPI = {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${accessToken}`,
-      },
+      }
     })
       .then((res) => res.json())
       .catch((err) => console.log(err));
   }
 
-  
+
 }
 
 export default serverAPI;

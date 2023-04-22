@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
-import { PlantInfo } from '../types/plant';
+import { IPlantInfo } from '../types/plant';
+import PlantCard from '../components/PlantCard';
 
 interface Props {}
 
 const PlantId: React.FC<Props> = () => {
 
   const [file, setFile] = useState<string | null>(null);
-  const [plantInfo, setPlantInfo] = useState<PlantInfo | null>(null);
+  const [plantInfo, setPlantInfo] = useState<IPlantInfo | null>(null);
   const [inputValue, setInputValue] = useState("");
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    console.log(file);
 
     const response = await fetch("http://localhost:3001/idplant", {
       method: "POST",
@@ -22,9 +21,10 @@ const PlantId: React.FC<Props> = () => {
     });
 
     const data = await response.json();
+    console.log(data);
     setPlantInfo(data);
     setInputValue("");
-    console.log(plantInfo);
+
   };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,17 +51,7 @@ const PlantId: React.FC<Props> = () => {
 
     </div>
     <div>
-      {plantInfo && (
-              <div className="plantIDCard">
-                <h2>{plantInfo.plant_name}</h2>
-                <h2>OTHER NAME FOR CSS STYLING I WILL NOT MAKE MORE REQS</h2>
-                <button>Save to your garden!</button>
-              </div>
-            )}
-    <div className="plantIDCard">
-      <h2>Plant Name</h2>
-      <button>Save to your garden!</button>
-    </div>
+      {plantInfo && <PlantCard plantInfo={plantInfo}/>}
     </div>
 
     </>

@@ -17,10 +17,10 @@ const authMiddleware = async (req: Request, res: Response, next: NextFunction) =
     // verify & decode token payload,
     const { _id } = jwt.verify(token, SECRET_KEY) as { _id: string };
     // Have to be USER.USER due to the way we export it in models/user.ts
-    const user: IUser | null = await USER.USER.findOne({ _id });
+    const user: IUser | null = await USER.findOne({ _id });
     if (!user) return res.status(401).json({message: "User Unauthorized"});
     req.user = user;
-    return next(user);
+    return next();
   } catch (error) {
     res.sendStatus(401);
   }

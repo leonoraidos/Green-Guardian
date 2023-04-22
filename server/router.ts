@@ -1,14 +1,13 @@
-import { Router, Request, Response } from 'express';
+import { Router } from 'express';
 import * as userController from './controllers/user';
 import * as plantController from './services/plantidAPI';
+import * as gardenController from './controllers/plant';
 import authMiddleware from './middleware/authmiddleware';
 
 const router = Router();
 
 //USER REQUESTS
-router.get('/', (req: Request, res: Response) => {
-  res.send('Hello, world!');
-});
+
 
 router.post('/register', userController.create);
 
@@ -17,7 +16,7 @@ router.post('/login', userController.login);
 router.get('/me', authMiddleware, userController.profile);
 
 //to save plant to own guarden
-router.post('/save')
+router.post('/saveplant', gardenController.save);
 
 //to get own plants
 //router.get('/myguarden', authMiddleware, userController);

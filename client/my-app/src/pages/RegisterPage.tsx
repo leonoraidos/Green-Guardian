@@ -42,12 +42,12 @@ const Register = () => {
     } else {
       const {accessToken} = res;
       localStorage.setItem('accessToken', accessToken);
-      navigate('/profile');
+      navigate('/');
     }
   }
 
   return (
-    <div>
+    <div className="forms">
       <section id="registerFormSection">
         <form className="form" onSubmit={handleSubmit}>
           <input

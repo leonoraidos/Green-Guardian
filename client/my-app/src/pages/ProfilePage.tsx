@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import serverAPI from '../utils/serverAPI';
 import { ProfileState } from '../types/user';
+import PlantList from '../components/PlantList';
 
 const profileState: ProfileState = {
   firstName: '',
@@ -33,7 +34,7 @@ function Profile() {
           console.log('User not found')
         }
       } catch (error) {
-        console.log(error);
+        console.log('profile get error: ', error);
       } finally {
         setIsLoading(false);
       }
@@ -50,8 +51,12 @@ function Profile() {
 
   return (
     <div>
+      <div className="profileCard">
       <h1>{userState.firstName}</h1>
     </div>
+      <PlantList />
+    </div>
+
   );
 }
 

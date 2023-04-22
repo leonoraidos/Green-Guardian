@@ -1,3 +1,4 @@
+//import {useState} from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './pages/LoginPage';
 import NavBar from './components/NavBar';
@@ -7,15 +8,14 @@ import Register from './pages/RegisterPage';
 import Profile from './pages/ProfilePage';
 import PlantId from './pages/IdPlantPage';
 import Alerts from './components/AlertList';
-
 import './App.css';
 
-
-//const auth = require('./utils/auth');
+//eventually implement authentication for sure
+//import auth from './utils/auth';
 
 function App() {
-  //const initialState = auth.isAuthenticated();
-  //const [isAuthenticated, setIsAuthenticated] = useState(initialState);
+  // const initialState = auth.isAuthenticated();
+  // const [isAuthenticated, setIsAuthenticated] = useState(initialState);
 
   return (
     <div className="App" >
@@ -29,7 +29,7 @@ function App() {
           <Route path="/alerts" element={<Alerts />}></Route>
           <Route></Route>
         </Routes>
-        <NavBar />
+        <NavBar  />
       </BrowserRouter>
 
     </div>

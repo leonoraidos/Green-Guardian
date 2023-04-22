@@ -29,17 +29,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const userController = __importStar(require("./controllers/user"));
 const plantController = __importStar(require("./services/plantidAPI"));
+const gardenController = __importStar(require("./controllers/plant"));
 const authmiddleware_1 = __importDefault(require("./middleware/authmiddleware"));
 const router = (0, express_1.Router)();
 //USER REQUESTS
-router.get('/', (req, res) => {
-    res.send('Hello, world!');
-});
 router.post('/register', userController.create);
 router.post('/login', userController.login);
 router.get('/me', authmiddleware_1.default, userController.profile);
 //to save plant to own guarden
-router.post('/save');
+router.post('/saveplant', gardenController.save);
 //to get own plants
 //router.get('/myguarden', authMiddleware, userController);
 //router.post('/removeplant', authMiddleware, )

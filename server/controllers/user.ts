@@ -12,14 +12,14 @@ export const create = async (req: Request, res: Response): Promise<void> => {
 
   try {
     // Have to be USER.USER due to the way we export it in models/user.ts
-    const user = await USER.USER.findOne({ email: email });
+    const user = await USER.findOne({ email: email });
     if (user) {
       res.status(409).send({ error: '409', message: 'User already exists' });
       return;
     }
 
     const hash = await bcrypt.hash(password, 10);
-    const newUser = new USER.USER ({
+    const newUser = new USER ({
       ...req.body,
       password: hash,
     });
@@ -28,7 +28,7 @@ export const create = async (req: Request, res: Response): Promise<void> => {
     res.status(201).send({ accessToken, message: 'User created successfully' });
   } catch (error) {
     res.status(400).send({ error: error, message: 'Could not create user' });
-    console.log({error});
+    console.log(error);
   }
 };
 
@@ -37,7 +37,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
 
   if (!email || !password) { res.status(400).json({message: "All fields are required"});}
   try {
-    const user = await USER.USER.findOne({ email: email });
+    const user = await USER.findOne({ email: email });
 
     if (!user) throw new Error();
 
@@ -48,6 +48,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
     res.status(200).send({ accessToken });
 
   } catch (error) {
+    console.log(error);
     res
       .status(401)
       .send({ error: '401', message: 'Username or password is incorrect' });
@@ -69,7 +70,9 @@ export const profile = async (req: Request, res: Response) => {
   } catch (error) {
 
     res.status(404).send({ error, message: 'Resource not found' });
-    
+
   }
+
+  
 };
 

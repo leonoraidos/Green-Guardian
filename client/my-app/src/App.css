@@ -114,3 +114,17 @@ button {
   border-radius: inherit;
   z-index: -1;
 }
+
+.profileCard {
+  display: flex;
+  width: 250px;
+  background: rgba( 108, 133, 120, 0.5 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 18px );
+  -webkit-backdrop-filter: blur( 18px );
+  border-radius: 10px;
+  flex-direction: row;
+  /* justify-content: end; */
+  margin-left: auto;
+
+}

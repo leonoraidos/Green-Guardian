@@ -10,7 +10,7 @@ const initialState = {
 };
 
 
-function Register() {
+const Register = () => {
 
   let navigate = useNavigate();
   const [state, setState] = useState(initialState);
@@ -48,7 +48,7 @@ function Register() {
 
   return (
     <div>
-      <section>
+      <section id="registerFormSection">
         <form className="form" onSubmit={handleSubmit}>
           <input
             type="text"

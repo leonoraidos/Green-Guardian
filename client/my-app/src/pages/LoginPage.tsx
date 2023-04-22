@@ -59,6 +59,7 @@ function Login() {
             name="email"
             value={state.email}
             onChange={handleChange}
+            required
           />
           <input
             type="password"
@@ -66,6 +67,7 @@ function Login() {
             name="password"
             value={state.password}
             onChange={handleChange}
+            required
           />
           <button className="form-submit" type="submit" disabled={validateForm()}>
             &nbsp;Login&nbsp;

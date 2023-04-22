@@ -1,5 +1,6 @@
 import { Document } from 'mongoose';
 import mongoose from '../db';
+import { Request } from 'express';
 
 
 interface IUser extends Document{
@@ -10,7 +11,7 @@ interface IUser extends Document{
   lastName: string;
 }
 
-interface ReqUser {
+interface ReqUser extends Request{
   user: {
     _id: string;
     email: string;

@@ -28,6 +28,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const userController = __importStar(require("./controllers/user"));
+const plantController = __importStar(require("./services/plantidAPI"));
 const authmiddleware_1 = __importDefault(require("./middleware/authmiddleware"));
 const router = (0, express_1.Router)();
 //USER REQUESTS
@@ -43,10 +44,6 @@ router.post('/save');
 //router.get('/myguarden', authMiddleware, userController);
 //router.post('/removeplant', authMiddleware, )
 //API REQUESTS
-router.post('/idplant', (req, res) => {
-    const base64Img = req.body.image;
-    console.log(base64Img, req);
-    res.status(200);
-});
+router.post('/idplant', plantController.getPlant);
 router.get('/ownplantdetails');
 module.exports = router;

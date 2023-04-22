@@ -7,6 +7,7 @@ const PlantId: React.FC<Props> = () => {
 
   const [file, setFile] = useState<string | null>(null);
   const [plantInfo, setPlantInfo] = useState<PlantInfo | null>(null);
+  const [inputValue, setInputValue] = useState("");
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -20,10 +21,10 @@ const PlantId: React.FC<Props> = () => {
       body: JSON.stringify({ image: file }),
     });
 
-    console.log(response.body);
-
     const data = await response.json();
     setPlantInfo(data);
+    setInputValue("");
+    console.log(plantInfo);
   };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,19 +42,30 @@ const PlantId: React.FC<Props> = () => {
   };
 
   return (
+    <>
     <div className="imageForm">
       <form className="form" onSubmit={handleSubmit}>
-        <input type="file" onChange={handleFileChange} />
+        <input type="file" onChange={handleFileChange} value={inputValue}/>
         <button type="submit">Identify Plant</button>
       </form>
-      {plantInfo && (
-        <div>
-          <h2>{plantInfo.name}</h2>
-          <p>{plantInfo.description}</p>
-          <a href={plantInfo.url}>Learn more about this plant</a>
-        </div>
-      )}
+
     </div>
+    <div>
+      {plantInfo && (
+              <div className="plantIDCard">
+                <h2>{plantInfo.plant_name}</h2>
+                <h2>OTHER NAME FOR CSS STYLING I WILL NOT MAKE MORE REQS</h2>
+                <button>Save to your garden!</button>
+              </div>
+            )}
+    <div className="plantIDCard">
+      <h2>Plant Name</h2>
+      <button>Save to your garden!</button>
+    </div>
+    </div>
+
+    </>
+
   );
 };
 

@@ -1,5 +1,6 @@
 import { Router, Request, Response } from 'express';
 import * as userController from './controllers/user';
+import * as plantController from './services/plantidAPI';
 import authMiddleware from './middleware/authmiddleware';
 
 const router = Router();
@@ -27,11 +28,7 @@ router.post('/save')
 
 
 //API REQUESTS
-router.post('/idplant', (req: Request, res: Response) => {
-  const base64Img = req.body.image;
-  console.log(base64Img, req);
-  res.status(200);
-});
+router.post('/idplant', plantController.getPlant);
 
 router.get('/ownplantdetails')
 

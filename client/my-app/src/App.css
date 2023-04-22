@@ -88,3 +88,29 @@ button {
   font-size: 20px;
 }
 
+.plantIDCard {
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 62, 31, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.47);
+  border-radius: 10px;
+  margin: 20px 20px;
+  height: 200px;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* added for absolute positioning of pseudo-element */
+}
+
+/* pseudo-element to create glass effect */
+.plantIDCard::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12.5px);
+  border-radius: inherit;
+  z-index: -1;
+}

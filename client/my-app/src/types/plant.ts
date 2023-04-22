@@ -1,6 +1,6 @@
 export interface PlantInfo {
-  name: string,
-  url: string,
-  description: string,
+  plant_name: string,
+  id: number,
+
 }
 

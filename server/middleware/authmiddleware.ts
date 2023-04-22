@@ -1,8 +1,8 @@
 import { Response, NextFunction } from 'express';
 import { Request } from '../types/user';
 import jwt, { Secret } from 'jsonwebtoken';
-import User, { IUser } from './../models/user';
-import USER from '../models/user';
+import {USER,  IUser } from './../models/user';
+
 
 
 const SECRET_KEY: Secret = process.env.SECRET_KEY || 'super secret dont use this what';

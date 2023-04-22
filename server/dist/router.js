@@ -46,4 +46,4 @@ router.post('/save');
 //API REQUESTS
 router.post('/idplant', plantController.getPlant);
 router.get('/ownplantdetails');
-module.exports = router;
+exports.default = router;

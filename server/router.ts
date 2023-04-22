@@ -33,4 +33,4 @@ router.post('/idplant', plantController.getPlant);
 router.get('/ownplantdetails')
 
 
-module.exports = router;
+export default router;

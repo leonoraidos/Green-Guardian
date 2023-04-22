@@ -24,5 +24,5 @@ export const getPlant = async (req: Request, res: Response): Promise<void> => {
 }
 
 export const savePlant = async (req: Request, res: Response) => {
-
+  console.log('code will be here wooo', req, res);
 }

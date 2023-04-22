@@ -1,6 +1,6 @@
 import { Request as ExpressRequest } from 'express';
-const { IUser } =  require('../models/user');
+import { IUser } from '../models/user';
 
 export interface Request extends ExpressRequest {
-  user?: typeof IUser;
+  user?: IUser;
 }

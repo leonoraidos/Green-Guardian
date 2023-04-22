@@ -1,8 +1,8 @@
 import { Response } from 'express';
 import { Request } from '../types/user';
 import bcrypt from 'bcrypt';
-import jwt, { Secret } from 'jsonwebtoken';
-import USER from '../models/user';
+import jwt from 'jsonwebtoken';
+import { USER, ReqUser } from '../models/user';
 const SECRET_KEY: string = process.env.SECRET_KEY || 'super secret dont use this what';
 
 export const create = async (req: Request, res: Response): Promise<void> => {
@@ -34,7 +34,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
   const { email, password } = req.body;
   try {
     const user = await USER.USER.findOne({ email: email });
-    
+
     if (!user) throw new Error();
     const validatedPass = await bcrypt.compare(password, user.password);
     if (!validatedPass) throw new Error();
@@ -47,7 +47,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-export const profile = async (req: Request, res: Response): Promise<void> => {
+export const profile = async (req: ReqUser, res: Response): Promise<void> => {
   try {
     const { _id, firstName, lastName } = req.user;
     const user = { _id, firstName, lastName };

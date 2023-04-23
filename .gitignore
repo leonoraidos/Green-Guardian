@@ -8,3 +8,4 @@ dist
 
 # misc
 .env
+/server/.env

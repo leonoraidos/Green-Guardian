@@ -16,10 +16,10 @@ router.post('/login', userController.login);
 router.get('/me', authMiddleware, userController.profile);
 
 //to save plant to own guarden
-router.post('/saveplant', gardenController.save);
+router.post('/saveplant', authMiddleware, gardenController.save);
 
 //to get own plants
-//router.get('/myguarden', authMiddleware, userController);
+router.get('/myguarden', authMiddleware, gardenController.getPlants);
 
 
 //router.post('/removeplant', authMiddleware, )

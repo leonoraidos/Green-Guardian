@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import serverAPI from '../utils/serverAPI';
+import serverAPI from '../utils/UserAPI';
 import { ProfileState } from '../types/user';
 import PlantList from '../components/PlantList';
+import UserCard from '../components/UserCard';
 
 const profileState: ProfileState = {
   firstName: '',
@@ -50,12 +51,17 @@ function Profile() {
   }
 
   return (
-    <div>
-      <div className="profileCard">
-      <h1>{userState.firstName}</h1>
+    <>
+    <div className="profileCard">
+      <UserCard user={userState} />
+
     </div>
+
+    <div className="gardenPlant">
       <PlantList />
     </div>
+    
+    </>
 
   );
 }

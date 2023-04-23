@@ -1,31 +1,48 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { PlantCardProps } from "../types/plant";
+import plantAPI from "../utils/PlantApi";
 
-const PlantCard: FC<PlantCardProps> = ({plantInfo}) => {
+const PlantCard: FC<PlantCardProps> = ({plantInfo, cardClass}) => {
+  const [saved, setSaved] = useState(false);
 
   if (!plantInfo) {
     return null;
   }
 
-  const savePlant = async () => {
+  const accessToken = localStorage.getItem('accessToken')
 
-    const res = await fetch('http://localhost:3001/saveplant', {
-      method: "POST",
-      mode: "cors",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({plantInfo})
-    })
-      const data = await res.json();
-      console.log(data);
+  const handleSavePlant = async () => {
+    if (accessToken !== null) {
+      try {
+        await plantAPI.savePlant(plantInfo, accessToken);
+        setSaved(true);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
 
-  }
 
   return (
     <div className="plantIDCard">
+      <div className={`${cardClass}`}>
       <h2>{plantInfo.plant_name}</h2>
-      <button onClick={savePlant}>Save to your garden!</button>
+      <p>Scientific name: {plantInfo.plant_details.scientific_name ?? 'N/A'}</p>
+      {plantInfo.plant_details.edible_parts && (
+        <p>Edible parts: {plantInfo.plant_details.edible_parts.join(", ")}</p>
+      )}
+      {plantInfo.plant_details.propagation_methods && (
+        <p>Propagation methods: {plantInfo.plant_details.propagation_methods.join(", ")}</p>
+      )}
+      {plantInfo.plant_details.watering && (
+        <p>Watering: Min {plantInfo.plant_details.watering.min} times per week</p>
+      )}
+      {!saved && <button onClick={handleSavePlant}>Save to your garden!</button>}
+      {saved && <p>Plant saved to your garden!</p>}
+      </div>
     </div>
-  )
-}
+  );
+
+};
 
 export default PlantCard;

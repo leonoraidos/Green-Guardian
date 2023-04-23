@@ -1,14 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IPlantInfo } from '../types/plant';
 import PlantCard from '../components/PlantCard';
 
 interface Props {}
+
+const CACHE_KEY = "identifiedPlant";
+const CACHE_EXPIRATION_MS = 24 * 60 * 60 * 1000; // 24 hours
 
 const PlantId: React.FC<Props> = () => {
 
   const [file, setFile] = useState<string | null>(null);
   const [plantInfo, setPlantInfo] = useState<IPlantInfo | null>(null);
   const [inputValue, setInputValue] = useState("");
+
+  useEffect(() => {
+    const cachedPlantInfo = localStorage.getItem(CACHE_KEY);
+    if (cachedPlantInfo) {
+      const { plantInfo, timestamp } = JSON.parse(cachedPlantInfo);
+      if (Date.now() - timestamp < CACHE_EXPIRATION_MS) {
+        setPlantInfo(plantInfo);
+      } else {
+        localStorage.removeItem(CACHE_KEY);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    const savePlantInfoToCache = () => {
+      if (plantInfo) {
+        localStorage.setItem(
+          CACHE_KEY,
+          JSON.stringify({
+            plantInfo,
+            timestamp: Date.now(),
+          })
+        );
+      }
+    };
+    const timerId = setTimeout(savePlantInfoToCache, 1000);
+    return () => clearTimeout(timerId);
+  }, [plantInfo]);
+
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -24,7 +56,6 @@ const PlantId: React.FC<Props> = () => {
     console.log(data);
     setPlantInfo(data);
     setInputValue("");
-
   };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,19 +74,21 @@ const PlantId: React.FC<Props> = () => {
 
   return (
     <>
-    <div className="imageForm">
-      <form className="form" onSubmit={handleSubmit}>
-        <input type="file" onChange={handleFileChange} value={inputValue}/>
-        <button type="submit">Identify Plant</button>
-      </form>
-
-    </div>
-    <div>
-      {plantInfo && <PlantCard plantInfo={plantInfo}/>}
-    </div>
-
+      <div className="imageForm">
+        <form className="form" onSubmit={handleSubmit}>
+          <input type="file" onChange={handleFileChange} value={inputValue}/>
+          <button type="submit">Identify Plant</button>
+        </form>
+      </div>
+      <p>When a plant is identified, it will be available to you for 24 hours. If you would like to save it to your collection, click the save button.</p>
+      <div>
+        {plantInfo ? (
+          <PlantCard plantInfo={plantInfo} cardClass="idPlantCard"/>
+        ) : (
+          <p>No plant identified yet.</p>
+        )}
+      </div>
     </>
-
   );
 };
 

@@ -37,9 +37,9 @@ router.post('/register', userController.create);
 router.post('/login', userController.login);
 router.get('/me', authmiddleware_1.default, userController.profile);
 //to save plant to own guarden
-router.post('/saveplant', gardenController.save);
+router.post('/saveplant', authmiddleware_1.default, gardenController.save);
 //to get own plants
-//router.get('/myguarden', authMiddleware, userController);
+router.get('/myguarden', authmiddleware_1.default, gardenController.getPlants);
 //router.post('/removeplant', authMiddleware, )
 //API REQUESTS
 router.post('/idplant', plantController.getPlant);

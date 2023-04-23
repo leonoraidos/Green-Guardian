@@ -44,4 +44,4 @@ const USER = mongoose.model('User', userSchema);
 
 export { USER };
 export { IUser };
-export {ReqUser}
+export { ReqUser }

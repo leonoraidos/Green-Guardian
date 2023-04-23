@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import serverAPI from '../utils/serverAPI';
+import serverAPI from '../utils/UserAPI';
 import { useNavigate } from 'react-router-dom';
 
 const initialState = {

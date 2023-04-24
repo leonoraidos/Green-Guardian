@@ -13,11 +13,11 @@
 }
 
 .navicons {
-  width: 15vw; /* Set the width of the icons to 15% of the viewport width */
+  width: 15vw; 
   max-width: 95px; /* Set a maximum width to ensure the icons don't become too large */
   height: auto; /* Set the height to 'auto' to maintain the aspect ratio of the original image */
   justify-content: space-between;
-  margin: 4px 40px;
+  margin: 4px 8vw;
 }
 
 .logobar {

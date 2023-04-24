@@ -28,21 +28,22 @@ function Login() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Add logic to send a request to API service /login
+
     const { email, password } = state;
     const user: LoginState = { email, password };
     const res = await serverAPI.login(user);
 
     if (res.error) {
+      //ADD BETTER ERROR HANDLING SO USER KNOWS
       alert(`${res.message}`);
       setState(initialState);
+
     } else {
+
       const { accessToken } = res;
       localStorage.setItem('accessToken', accessToken);
-      // This sets isAuthenticated = true and redirects to profile
-      //props.setIsAuthenticated(true);
-      //auth.login(() =>
       navigate('/profile');
+
     }
 
 
@@ -70,7 +71,7 @@ function Login() {
             required
           />
           <button className="form-submit" type="submit" disabled={validateForm()}>
-            &nbsp;Login&nbsp;
+            Login
           </button>
         </form>
       </section>

@@ -18,6 +18,10 @@ const PlantCard: FC<PlantCardProps> = ({plantInfo, cardClass}) => {
         setSaved(true);
       } catch (err) {
         console.log(err);
+        //skeleton error handling, needs improvement 
+        return (
+          <p>Unable to save plant. Please try again later.</p>
+        )
       }
     }
   };

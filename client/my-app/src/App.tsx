@@ -11,7 +11,7 @@ import Alerts from './components/AlertList';
 import './App.css';
 import background from './assests/pexels-laura-meinhardt-16102230.jpg'
 
-//eventually implement authentication for sure
+//eventually implement authentication 
 //import auth from './utils/auth';
 
 function App() {
@@ -19,6 +19,8 @@ function App() {
   // const [isAuthenticated, setIsAuthenticated] = useState(initialState);
 
   return (
+
+    //eventually this will have a protected route component to make the protected pages redirect the user back to login
     <div style={{ backgroundImage: `url(${background})` }}>
       <BrowserRouter>
         <LogoBar />

@@ -32,6 +32,7 @@ const PlantList = () => {
   }, []);
 
   if (isLoading) {
+    //better loading to come stay tuned
     return <div>Loading...</div>
   }
 

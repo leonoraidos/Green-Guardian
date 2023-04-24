@@ -1,3 +1,6 @@
+//currently not in use but if possible will be the page user is redirected
+//to be prompted to download the PWA/save to home screen
+
 import React from 'react';
 import Login from './LoginPage';
 //import Register from './RegisterPage'

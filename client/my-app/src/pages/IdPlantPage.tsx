@@ -53,7 +53,6 @@ const PlantId: React.FC<Props> = () => {
     });
 
     const data = await response.json();
-    console.log(data);
     setPlantInfo(data);
     setInputValue("");
   };
@@ -70,6 +69,7 @@ const PlantId: React.FC<Props> = () => {
         }
       };
     }
+
   };
 
   return (

@@ -47,6 +47,7 @@ function Profile() {
   }, [])
 
   if (isLoading) {
+    //placeholder for a nicer spinner eventually 
     return <div>Loading...</div>
   }
 
@@ -58,9 +59,10 @@ function Profile() {
     </div>
 
     <div className="gardenPlant">
+      <p>Your Garden:</p>
       <PlantList />
     </div>
-    
+
     </>
 
   );

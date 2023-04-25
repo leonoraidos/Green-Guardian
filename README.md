@@ -2,7 +2,7 @@
 
 Green Guardian allows users to identify plants through pictures uploaded, save the images to their personal 'garden' and set alerts to be reminded to water as many as plants as desired.
 
-##Installation
+## Installation
 
 Run npm install on both the server folder and client/my-app folder.
 
@@ -10,7 +10,7 @@ You will a few things before being able to run this project. As you may see on t
 sample files, you will need several personal key and details and place them in your own
 env file.
 
-#Plant.id API
+# Plant.id API
 
 Visit https://web.plant.id/ and get your own api key. Plant.id API allows you to make
 100 requests for free. Set it up just for the plant identification feature.
@@ -18,7 +18,7 @@ Visit https://web.plant.id/ and get your own api key. Plant.id API allows you to
 After obtaining the key, put this in your .env file in your server folder. We will use
 it when an user request an idPlant request.
 
-#Firebase
+# Firebase
 
 Next, you need to create a Firebase account. If you need at any point to follow a
 tutorial and want to better understand what is happening, feel free to reference the
@@ -28,7 +28,7 @@ following:
     https://blog.logrocket.com/push-notifications-react-firebase/
     https://dev.tojeremytenjohow-to-send-push-notifications-with-firebase-and-react-1pol
 
-#NODE-CRON
+# NODE-CRON
 
 Reference these two if you need help understanding Cron and how to play with it: https://www.npmjs.com/package/node-cron and
 

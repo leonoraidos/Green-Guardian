@@ -5,7 +5,7 @@ import { IPlantInfo } from "../types/plant";
 
 
 
-const PlantList = () => {
+const PlantList = ({ showAllPlants }: { showAllPlants: boolean }) => {
 
   const [gardenState, setGardenState] = useState<IPlantInfo[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -15,9 +15,9 @@ const PlantList = () => {
     const getPlants = async (accessToken: string) => {
       try {
         setIsLoading(true);
-        const  { plants } = await plantAPI.garden(accessToken);
+        const { plants } = await plantAPI.garden(accessToken);
         console.log(plants);
-        setGardenState(plants);
+        setGardenState(showAllPlants ? plants : plants.filter((plant: IPlantInfo) => plant.alerts));
         setIsLoading(false);
       } catch (error) {
         console.log(error);
@@ -29,7 +29,7 @@ const PlantList = () => {
       getPlants(accessToken);
     }
 
-  }, []);
+  }, [showAllPlants]);
 
   if (isLoading) {
     //better loading to come stay tuned
@@ -39,10 +39,13 @@ const PlantList = () => {
   return (
     <>
       {gardenState.map((plant) => (
-        <PlantCard key={plant.id} plantInfo={plant} cardClass="plantListCard"/>
+        <PlantCard key={plant.id} plantInfo={plant} cardClass="plantListCard" isProfile={true} showAllPlants={showAllPlants}/>
       ))}
     </>
   );
 };
+
+
+
 
 export default PlantList;

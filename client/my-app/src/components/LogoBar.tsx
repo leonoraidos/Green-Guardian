@@ -1,3 +1,6 @@
+
+
+
 function LogoBar () {
   return (
     <div className="logobar">

@@ -47,7 +47,7 @@ function Profile() {
   }, [])
 
   if (isLoading) {
-    //placeholder for a nicer spinner eventually 
+    //placeholder for a nicer spinner eventually
     return <div>Loading...</div>
   }
 
@@ -59,8 +59,10 @@ function Profile() {
     </div>
 
     <div className="gardenPlant">
-      <p>Your Garden:</p>
-      <PlantList />
+      <div className="gardenTitle">
+        <p className="gardenText">Your Garden:</p>
+      </div>
+      <PlantList  showAllPlants={true}/>
     </div>
 
     </>

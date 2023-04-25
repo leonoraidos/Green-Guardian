@@ -22,14 +22,13 @@ router.post('/saveplant', authMiddleware, gardenController.save);
 router.get('/myguarden', authMiddleware, gardenController.getPlants);
 
 
-//router.post('/removeplant', authMiddleware, )
+router.put('/setalert', authMiddleware, gardenController.toggleAlert);
 
 
 
 //API REQUESTS
 router.post('/idplant', plantController.getPlant);
 
-router.get('/ownplantdetails')
 
 
 export default router;

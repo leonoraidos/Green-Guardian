@@ -9,6 +9,7 @@ interface IUser extends Document{
   password: string;
   firstName: string;
   lastName: string;
+  FMCUserToken?: string;
 }
 
 interface ReqUser extends Request{
@@ -18,6 +19,7 @@ interface ReqUser extends Request{
     password: string;
     firstName: string;
     lastName: string;
+    FMCUserToken?: string;
   }
 }
 
@@ -38,6 +40,9 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  FCMUserToken: {
+    type: String,
+  }
 });
 
 const USER = mongoose.model('User', userSchema);

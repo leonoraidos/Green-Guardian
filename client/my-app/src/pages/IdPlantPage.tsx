@@ -80,10 +80,10 @@ const PlantId: React.FC<Props> = () => {
           <button type="submit">Identify Plant</button>
         </form>
       </div>
-      <p>When a plant is identified, it will be available to you for 24 hours. If you would like to save it to your collection, click the save button.</p>
+      <div className="idInfo"><p>When a plant is identified, it will be available to you for 24 hours. If you would like to save it to your collection, click the save button.</p></div>
       <div>
         {plantInfo ? (
-          <PlantCard plantInfo={plantInfo} cardClass="idPlantCard"/>
+          <PlantCard plantInfo={plantInfo} cardClass="idPlantCard" isProfile={false} showAllPlants={true}/>
         ) : (
           <p>No plant identified yet.</p>
         )}

@@ -1,7 +1,16 @@
-function Alerts () {
+import PlantList from "./PlantList"
+
+
+function AlertList () {
+
   return (
-    <h1> alerts </h1>
-  )
+
+    <div className="alerts">
+      <PlantList showAllPlants={false} />
+      
+    </div>
+
+  );
 }
 
-export default Alerts;
+export default AlertList;

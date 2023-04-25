@@ -29,6 +29,9 @@ interface IPlantDetails {
 export interface IPlant extends Document {
   plant_name: string;
   id: number;
+  alerts: boolean,
+  created_at: Date,
+  last_watered: Date,
   user: mongoose.Schema.Types.ObjectId;
   plant_details: IPlantDetails;
 }

@@ -19,17 +19,22 @@ function Login() {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log('line 22', e.target.value);
+
     const { name, value } = e.target;
+    console.log('line 25', name, value);
     setState((prevState) => ({
       ...prevState,
       [name]: value,
     }));
+    console.log('line 30')
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    console.log('Line 31');
     const { email, password } = state;
+    console.log('Line 33', email, password);
     const user: LoginState = { email, password };
     const res = await serverAPI.login(user);
 

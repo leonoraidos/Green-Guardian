@@ -1,7 +1,8 @@
 import { Response } from 'express';
 import { IPlant, AuthenticatedRequest } from '../types/plants';
 import { PLANT } from '../models/plant';
-
+import {USER} from '../models/user';
+import messaging from '../services/firebaseSetUp';
 
 
 export const save = async (req: AuthenticatedRequest, res: Response) => {
@@ -15,6 +16,7 @@ export const save = async (req: AuthenticatedRequest, res: Response) => {
       id: plantInfo.id,
       plant_name: plantInfo.plant_name,
       user: req.user._id,
+      alerts: false,
       plant_details: {
         common_names: plantInfo.plant_details.common_names || [],
         edible_parts: plantInfo.plant_details.edible_parts || [],
@@ -43,11 +45,53 @@ export const getPlants = async (req: AuthenticatedRequest, res: Response) => {
 
   try {
     const plants = await PLANT.find({ user: req.user._id });
-    console.log('PLANTS: ', plants);
+    // console.log('PLANTS: ', plants);
 
     res.status(200).send({ plants, message: "Plants retrieved successfully" });
   } catch (error) {
     console.log('error is in the controller', error);
     res.status(404).send({ error, message: 'User has no plants saved' });
   }
+}
+
+
+//TODO: ADD API REQUEST TO SET ALERTS TO FALSE
+export const toggleAlert = async (req: AuthenticatedRequest, res: Response) => {
+  if (!req.user) {
+    return res.status(401);
+  }
+
+  try {
+
+    const plantId = req.body.plantInfo._id;
+    const plantName = req.body.plantInfo.plant_name;
+    const userId = req.user._id;
+    const FCMUserToken = req.body.userToken;
+
+    await PLANT.findByIdAndUpdate(plantId, {alerts: true}, {new: true});
+    await USER.findByIdAndUpdate(userId, {FCMUserToken: FCMUserToken});
+
+    const message = {
+      notification: {
+        title: 'Success!!!',
+        body: `You'll now recive notifications for your ${plantName}! 🌱`
+      },
+      token: FCMUserToken,
+    }
+
+    messaging.send(message)
+    .then((response) => {
+      console.log('Notification success :', response);
+    })
+    .catch((error) => {
+      console.log('Notification error :', error);
+    })
+
+
+
+    res.status(200).json({ message: 'Plant saved successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to save alerts' });
+  }
+
 }

@@ -1,6 +1,9 @@
 export interface IPlantInfo {
   plant_name: string;
   id: number;
+  alerts: boolean,
+  created_at: number,
+  last_watered: number,
   plant_details: {
     common_names?: string[];
     edible_parts?: string[];
@@ -31,4 +34,6 @@ export interface IPlantInfo {
 export interface PlantCardProps {
   plantInfo?: IPlantInfo | null;
   cardClass: string,
+  isProfile: boolean,
+  showAllPlants?: boolean
 }

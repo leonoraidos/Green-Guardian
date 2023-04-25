@@ -17,6 +17,21 @@ const plantSchema = new mongoose.Schema({
     ref: 'User',
     required: true,
   },
+  alerts: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
+  created_at: {
+    type: Date,
+    default: Date.now,
+    required: true,
+  },
+  last_watered: {
+    type: Date,
+    default: Date.now,
+    required: true,
+  },
   plant_details: {
     type: {
       common_names: {

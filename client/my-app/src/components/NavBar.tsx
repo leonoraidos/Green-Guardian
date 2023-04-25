@@ -6,11 +6,11 @@ import camera from '../assests/Picture4.png';
 function NavBar() {
   return (
     <>
-      <div className="navbar">
+      <nav className="navbar">
         <Link to={`profile`}><img src={profile} alt="Path to Profile Page" className="navicons"></img></Link>
         <Link to={`camera`}><img src={camera} alt="Path to Camera Page" className="navicons"></img></Link>
         <Link to={`alerts`}><img src={alert} alt="Path to Alerts Page" className="navicons"></img></Link>
-      </div>
+      </nav>
     </>
 
   )

@@ -1,6 +1,6 @@
 import { IPlantInfo } from "../types/plant";
 
-const SERVER_URL = 'http://localhost:3001';
+const SERVER_URL = process.env.REACT_APP_API_URL;
 
 const plantAPI = {
 
@@ -31,8 +31,22 @@ const plantAPI = {
     })
       .then((res) => res.json())
       .catch((err) => console.log(err));
-  }
+  },
 
+  async alert(plantInfo: IPlantInfo, accessToken: string, userToken: string) {
+    return fetch(`${SERVER_URL}/setalert`, {
+      method: 'PUT',
+      credentials: 'include',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`
+      },
+      body: JSON.stringify({plantInfo, userToken})
+    })
+      .then((res) => res.json())
+      .catch((err) => console.log(err));
+  }
 }
 
 export default plantAPI;

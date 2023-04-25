@@ -40,8 +40,7 @@ router.get('/me', authmiddleware_1.default, userController.profile);
 router.post('/saveplant', authmiddleware_1.default, gardenController.save);
 //to get own plants
 router.get('/myguarden', authmiddleware_1.default, gardenController.getPlants);
-//router.post('/removeplant', authMiddleware, )
+router.put('/setalert', authmiddleware_1.default, gardenController.toggleAlert);
 //API REQUESTS
 router.post('/idplant', plantController.getPlant);
-router.get('/ownplantdetails');
 exports.default = router;

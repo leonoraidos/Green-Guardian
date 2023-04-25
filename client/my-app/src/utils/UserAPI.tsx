@@ -1,6 +1,6 @@
 import { User, LoginState } from '../types/user';
 
-const SERVER_URL = 'http://localhost:3001';
+const SERVER_URL = process.env.REACT_APP_API_URL;
 
 const serverAPI = {
   async register(user: User) {
@@ -16,15 +16,25 @@ const serverAPI = {
   },
 
   async login(user: LoginState) {
-    return fetch(`${SERVER_URL}/login`, {
+    console.log(user.email);
+    console.log(`${SERVER_URL}/login`);
+   return fetch(`${SERVER_URL}/login`, {
       method: 'POST',
       credentials: 'include',
       mode: 'cors',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        //bellow here was an attemp to set up requests from phone to server but was unlucky
+        //kept here for future ref and attempts
+        "ngrok-skip-browser-warning": "true"
+      },
       body: JSON.stringify(user),
     })
+      .then((res) => {
+        console.log('line 28', res);
+        return res})
       .then((res) => res.json())
-      .catch((err) => console.log(err));
+      .catch((err) => console.log('API ERROR', err));
   },
 
   async profile(accessToken: string) {
@@ -35,6 +45,9 @@ const serverAPI = {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${accessToken}`,
+        //bellow here was an attemp to set up requests from phone to server but was unlucky
+        //kept here for future ref and attempts
+        "ngrok-skip-browser-warning": "true",
       }
     })
       .then((res) => res.json())

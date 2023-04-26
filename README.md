@@ -6,8 +6,8 @@ Green Guardian allows users to identify plants through pictures uploaded, save t
 
 Run npm install on both the server folder and client/my-app folder.
 
-You will a few things before being able to run this project. As you may see on the env
-sample files, you will need several personal key and details and place them in your own
+You will need a few things before being able to run this project. As you may see on the env
+sample files, you will need several personal key and details and to place them in your own
 env file.
 
 # Plant.id API
@@ -27,11 +27,15 @@ following:
     https://firebase.google.com/
     https://blog.logrocket.com/push-notifications-react-firebase/
     https://dev.tojeremytenjohow-to-send-push-notifications-with-firebase-and-react-1pol
-    
+
+
+In summary, you will need to register your project and get 3 main things. The WEB push certificates key value pair (on the client
+side seen and FIREBASE_KEY), the firebase config properties seen in the client and the Service Account admin credentials seen on the
+backend as a json file that will be available to you on your project setting under Service Accounts. This json file is then imported on file firebaseSetUp line 3.
 
 # Node-Cron
 
-Reference these two if you need help understanding Cron and how to play with it: https://www.npmjs.com/package/node-cron and
+Reference this if you need help understanding Cron and how to play with it: https://www.npmjs.com/package/node-cron
 
 Once everything is set-up, start both the client and the server:
 
@@ -51,5 +55,8 @@ The app's UI is currently designed to be used on a phone so open your inspector 
 of the phone options for your window dimensions.
 
 Unfortunately it seems Service Workers connections on localhost are no longer supported and do
-require an https conenction, therefore I could not make this a valid PWA just yet. 
+require an https conenction, therefore I could not make this a valid PWA just yet.
+
+So for next steps in my vision the project needs to either abandon the PWA appraoch and refactor the UI to funtion on desktop OR
+debug the issues with registering a service worker and the server requests so these work on the phone as well.
 

@@ -16,7 +16,7 @@ Visit https://web.plant.id/ and get your own api key. Plant.id API allows you to
 100 requests for free. Set it up just for the plant identification feature.
 
 After obtaining the key, put this in your .env file in your server folder. We will use
-it when an user request an idPlant request.
+it when an user requests an idPlant request.
 
 # Firebase
 
@@ -27,8 +27,9 @@ following:
     https://firebase.google.com/
     https://blog.logrocket.com/push-notifications-react-firebase/
     https://dev.tojeremytenjohow-to-send-push-notifications-with-firebase-and-react-1pol
+    
 
-# NODE-CRON
+# Node-Cron
 
 Reference these two if you need help understanding Cron and how to play with it: https://www.npmjs.com/package/node-cron and
 

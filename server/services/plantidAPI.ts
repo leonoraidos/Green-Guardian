@@ -18,7 +18,7 @@ export const getPlant = async (req: Request, res: Response): Promise<void> => {
     const { id, plant_name, plant_details } = plantResponse.data.suggestions[0];
     const plantInfo = { id, plant_name, plant_details };
     res.send(plantInfo);
-    //console.log(plantInfo);
+
   }).catch(err => {
       console.log('Error: ', err);
   })

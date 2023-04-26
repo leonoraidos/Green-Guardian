@@ -12,6 +12,8 @@ export const save = async (req: AuthenticatedRequest, res: Response) => {
 
   try {
     const plantInfo = req.body.plantInfo;
+
+    //Some api results will not have certain values so we provide some default values and handle them in the FE
     const plant: IPlant = new PLANT({
       id: plantInfo.id,
       plant_name: plantInfo.plant_name,
@@ -45,8 +47,6 @@ export const getPlants = async (req: AuthenticatedRequest, res: Response) => {
 
   try {
     const plants = await PLANT.find({ user: req.user._id });
-    // console.log('PLANTS: ', plants);
-
     res.status(200).send({ plants, message: "Plants retrieved successfully" });
   } catch (error) {
     console.log('error is in the controller', error);

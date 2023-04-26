@@ -1,5 +1,6 @@
 import * as admin from 'firebase-admin';
-import * as serviceAccount from '../green-guardian-6e142-firebase-adminsdk-qvj3u-e8392b1335.json';
+//include JSON file that is provided by firebase when you set up adminsdk
+import * as serviceAccount from '../firebase.json';
 
 const serviceAccountObject = JSON.parse(JSON.stringify(serviceAccount));
 

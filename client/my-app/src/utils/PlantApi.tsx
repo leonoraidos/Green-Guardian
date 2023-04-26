@@ -1,5 +1,6 @@
 import { IPlantInfo } from "../types/plant";
 
+//NEEDS REACT_APP TO ANY ENV VAR 
 const SERVER_URL = process.env.REACT_APP_API_URL;
 
 const plantAPI = {

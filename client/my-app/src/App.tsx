@@ -16,6 +16,7 @@ function App() {
 
   const [isTokenFound, setTokenFound ] = useState(false);
 
+  //when pages loads, gets connected to firebase and generates a client specific token 
   getTokenWrapper(setTokenFound);
 
   return (

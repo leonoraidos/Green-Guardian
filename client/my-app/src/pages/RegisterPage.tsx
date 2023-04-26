@@ -37,7 +37,7 @@ const Register = () => {
     const res = await serverAPI.register(user);
 
     if (res.error) {
-      //WILL ADD BETTER ERROR HANDLING
+      //NEEDS BETTER ERROR HANDLING
       alert(`${res.message}`);
       setState(initialState);
     } else {

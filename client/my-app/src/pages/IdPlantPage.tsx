@@ -73,14 +73,17 @@ const PlantId: React.FC<Props> = () => {
   };
 
   return (
-    <>
-      <div className="imageForm">
-        <form className="form" onSubmit={handleSubmit}>
-          <input type="file" onChange={handleFileChange} value={inputValue}/>
-          <button type="submit">Identify Plant</button>
-        </form>
-      </div>
-      <div className="idInfo"><p>When a plant is identified, it will be available to you for 24 hours. If you would like to save it to your collection, click the save button.</p></div>
+    <div className='id-wrapper'>
+      <div className='img-form-wrapper'>
+        <div className="idInfo"><p>When a plant is identified, it will be available to you for 24 hours. If you would like to save it to your collection, click the save button.</p></div>
+          <div className="imageForm">
+            <form className="form" onSubmit={handleSubmit}>
+              <input type="file" onChange={handleFileChange} value={inputValue}/>
+              <button type="submit">Identify Plant</button>
+            </form>
+          </div>
+        </div>
+
       <div>
         {plantInfo ? (
           <PlantCard plantInfo={plantInfo} cardClass="idPlantCard" isProfile={false} showAllPlants={true}/>
@@ -88,7 +91,7 @@ const PlantId: React.FC<Props> = () => {
           <p>No plant identified yet.</p>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

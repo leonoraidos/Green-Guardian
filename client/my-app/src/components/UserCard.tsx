@@ -10,7 +10,7 @@ const UserCard: React.FC<UserCardProps> = ({ user }) => {
   return (
     <div className="userCard">
       <h1 className="userName">{user.firstName}</h1>
-      <img src={profile} alt="Profile Icon" className="navicons"></img>
+      <img src={profile} alt="Profile Icon" className="navicons" id='usericon'></img>
     </div>
   );
 };

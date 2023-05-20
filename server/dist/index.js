@@ -22,13 +22,15 @@ app.use((0, cors_1.default)(corsConfig));
 app.use(express_1.default.json({ limit: '50mb' }));
 app.use(express_1.default.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000 }));
 app.use(router_1.default);
-//schedule take 3 param (expression, function, options)
+//schedule takes 3 param (expression, function, options)
 //for more information on node-cron, check the npm page and
 //https://www.freecodecamp.org/news/schedule-a-job-in-node-with-nodecron/
 // to see it at work, change the expression so it runs more frequently and add some console.log
 //to see it at work
 // options: schedule (default true, if set to false, you will have to trigger it by calling the start method
 //on the job object) and timezone
+//currently schedule is running every minute for dev and debugging purposes but
+//ideally would run perhaps twice a day
 node_cron_1.default.schedule('* * * * *', async () => {
     //get all plants that have alerts enabled
     const plants = await plant_1.PLANT.find({ alerts: true }).populate('user');

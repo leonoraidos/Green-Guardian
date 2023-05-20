@@ -6,6 +6,7 @@ Green Guardian allows users to identify plants through pictures uploaded, save t
 
 <img width="304" alt="Screenshot 2023-05-20 122409" src="https://github.com/leonoraidos/Green-Guardian/assets/109923328/5d7fbc90-4945-4467-90a4-2caada60ff2f">
 
+<br>
 <img width="237" alt="Screenshot 2023-05-20 122834" src="https://github.com/leonoraidos/Green-Guardian/assets/109923328/12686e74-95c4-4170-b4c5-6a934b0e72d0">
 
 
